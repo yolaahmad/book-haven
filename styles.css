@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+}
+
+.m-cont {
+  max-height: 400px;
+  width: 500px;
+  margin: 100px auto;
+}
+
+.container {
+  position: relative;
+  height: 400px;
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(11, 90, 164);
+  margin: 0px auto;
+  border-radius: 5px;
+  transition: transform 1000ms ease-in;
+}
+
+.f_container {
+  padding: 10px;
+  width: inherit;
+}
+
+input {
+  margin: 10px 0px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.892);
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+}
+
+.sub-btn {
+  background-color: green;
+  font-weight: bold;
+  font-family: sans-serif;
+  width: 100%;
+}
+
+a {
+  float: right;
+  color: black;
+  font-size: 2em;
+}
+
+.sign-up {
+  position: absolute;
+  z-index: 2;
+  transform: rotateY(0deg); /* Initially hidden */
+  backface-visibility: hidden;
+}
+
+.login {
+  position: absolute;
+  z-index: 1;
+  transform: rotateY(180deg); /* Initially visible */
+  backface-visibility: hidden;
+}
+
+.rotate-sign {
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.rotate-log {
+  transform: rotateY(0deg);
+  backface-visibility: visible;
+}/*# sourceMappingURL=styles.css.map */
