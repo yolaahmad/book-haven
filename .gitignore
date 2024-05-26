@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 *.txt
 =======
-.txt
-.scss
-.map
+*.txt
+*.scss
+*.map
 >>>>>>> de9241db0c011b940684bc204215ef452863b6c9

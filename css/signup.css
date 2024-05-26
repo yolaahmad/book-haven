@@ -5,29 +5,24 @@
 }
 
 body {
-  background: url("images/background4.jpg") no-repeat center center;
-  background-size: cover;
-  height: 90vh;
-  font-family: "Poppins", sans-serif;
+  background-color: rgb(255, 255, 255);
 }
-video {
-  display: none;
-}
+
 .m-cont {
-  height: auto;
-  width: 300px;
-  margin: 80px auto;
+  max-height: 400px;
+  width: 500px;
+  margin: 100px auto;
 }
 
 .container {
   position: relative;
-  height: 500px;
+  height: 400px;
   width: 300px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(78, 46, 27, 0.555);
+  background-color: rgb(11, 90, 164);
   margin: 0px auto;
   border-radius: 5px;
   transition: transform 1000ms ease-in;
@@ -36,82 +31,28 @@ video {
 .f_container {
   padding: 10px;
   width: inherit;
-  color: #fffefe;
-}
-.f_container img {
-  height: 30px;
-  width: 30px;
-  margin: 10px auto;
-  display: block;
-}
-.f_container h2 {
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 30px;
 }
 
 input {
   margin: 10px 0px;
-  border-radius: 3px;
-  background-color: rgba(255, 255, 255, 0.74);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.892);
   width: 100%;
-  height: 38px;
-  border: 0;
-  color: #000;
-  font-size: 0.93em;
+  height: 50px;
   padding: 5px;
 }
-input:focus {
-  border: 2px solid rgb(155, 119, 0);
-  outline: none;
-}
-.f_container .icon {
-  display: flex;
-  align-items: center;
-}
 
-.f_container .icon img {
-  margin-left: -40px;
-  height: 27px;
-  width: 27px;
-  cursor: pointer;
-}
-.f_container #hidePass,
-.f_container #hidePass2 {
-  display: none;
-}
-
-#sub-btn,
-#login-btn {
-  background-color: rgb(155, 119, 0);
-  font-weight: 100;
-  width: 40%;
-  border: 1px solid #000;
-  margin: 0 auto;
-  cursor: pointer;
-  display: block;
-  color: #f3f3f3;
-  margin-top: 20px;
-}
-
-#sub-btn:hover,
-#login-btn:hover {
-  background-color: tan;
-  color: #000;
-  transition: 0.5s;
-}
-.f_container p {
-  float: right;
-  margin-top: 20px;
-  font-size: 0.93em;
-  font-weight: 200;
+.sub-btn {
+  background-color: green;
+  font-weight: bold;
+  font-family: sans-serif;
+  width: 100%;
 }
 
 a {
-  color: rgb(248, 193, 121);
-  font-weight: 300;
-  font-size: 1em;
-  text-decoration: none;
+  float: right;
+  color: black;
+  font-size: 2em;
 }
 
 .sign-up {
@@ -130,56 +71,10 @@ a {
 
 .rotate-sign {
   transform: rotateY(180deg);
-  background-color: rgb(78, 46, 27);
   backface-visibility: hidden;
 }
 
 .rotate-log {
   transform: rotateY(0deg);
   backface-visibility: visible;
-} /*# sourceMappingURL=styles.css.map */
-
-@media screen and (min-width: 425px) {
-  body {
-    height: 86vh;
-  }
-  .m-cont {
-    width: 360px;
-    margin-top: 120px;
-  }
-  .container {
-    height: 560px;
-    width: 360px;
-  }
-  .f_container {
-    padding: 25px 30px;
-  }
-
-  input {
-    margin: 15px 0px;
-    border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.74);
-    width: 100%;
-    height: 38px;
-    border: 0;
-    color: #000;
-    font-size: 0.93em;
-    padding: 5px;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  body {
-    background: none;
-  }
-  body video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    display: block;
-    height: 100%;
-    filter: brightness(40%);
-    object-fit: cover;
-  }
-}
+}/*# sourceMappingURL=signup.css.map */

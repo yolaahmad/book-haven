@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(213, 215, 156);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.m-cont {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0px 0px 10px black;
+}
+.m-cont .carousel {
+  width: 100%;
+  height: 600px;
+  padding: 10px;
+  position: relative;
+}
+.m-cont .carousel img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 6px;
+}
+.m-cont .overlay-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 60%;
+  z-index: 999;
+}
+.m-cont .overlay-text h1 {
+  margin: 0 0 10px;
+  font-size: large;
+}
+.m-cont .overlay-text p {
+  margin: 0;
+  font-size: 0.8em;
+  line-height: 1.4;
+}
+
+.dots-container {
+  height: 50px;
+  width: 200px;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.dots {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
+  background-color: rgb(251, 251, 251);
+  border-radius: 50%;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.show {
+  animation: slide 2s;
+}
+
+.hide {
+  display: none;
+}
+
+@keyframes slide {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 400px) {
+  .m-cont .overlay-text {
+    max-width: 90%;
+    height: 200px;
+  }
+  .m-cont .overlay-text h1 {
+    font-size: small;
+  }
+  .m-cont .overlay-text p {
+    font-size: small;
+  }
+}
+@media screen and (min-width: 740px) {
+  .m-cont .overlay-text {
+    max-width: 90%;
+    height: 200px;
+  }
+  .m-cont .overlay-text h1 {
+    margin: 0 0 10px;
+    font-size: 26px;
+  }
+  .m-cont .overlay-text p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}/*# sourceMappingURL=index.css.map */
