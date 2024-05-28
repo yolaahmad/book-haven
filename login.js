@@ -19,6 +19,7 @@
 //     pEl.textContent = 'LOGIN'
 // })
 
+<<<<<<< HEAD
 const logLink = document.getElementById("login-link");
 const containerSignUp = document.querySelector(".sign-up");
 const containerLogin = document.querySelector(".login");
@@ -62,3 +63,22 @@ function togglePass2() {
     x.type = "password";
   }
 }
+=======
+
+
+const logLink = document.getElementById('login-link');
+const containerSignUp = document.querySelector('.sign-up');
+const containerLogin = document.querySelector('.login');
+const signLink = document.getElementById('sign-link');
+
+logLink.addEventListener('click', () => {
+    console.log('clicked');
+    containerSignUp.classList.toggle('rotate-sign');
+    containerLogin.classList.toggle('rotate-log'); 
+});
+
+signLink.addEventListener('click', () => {
+    containerLogin.classList.toggle('rotate-log');
+    containerSignUp.classList.remove('rotate-sign');
+});
+>>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42

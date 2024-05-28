@@ -19,13 +19,22 @@ body {
 
 .m-cont {
   width: 90%;
+<<<<<<< HEAD
   margin: 30px auto;
+=======
+  margin: 0 auto;
+>>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
   position: relative;
   box-shadow: 0px 0px 10px black;
 }
 .m-cont .carousel {
   width: 100%;
+<<<<<<< HEAD
   height: 500px;
+=======
+  height: 600px;
+  padding: 10px;
+>>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
   position: relative;
 }
 .m-cont .carousel img {
@@ -61,7 +70,11 @@ body {
   height: 50px;
   width: 200px;
   position: absolute;
+<<<<<<< HEAD
   bottom: -17%;
+=======
+  bottom: 5%;
+>>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
@@ -80,7 +93,11 @@ body {
 }
 
 .button {
+<<<<<<< HEAD
   margin: 20px;
+=======
+  margin-top: 25px;
+>>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
 }
 .button button {
   font-size: 1.2em;
@@ -105,6 +122,7 @@ button:hover {
   display: none;
 }
 
+<<<<<<< HEAD
 footer {
   background-color: black;
   color: white;
@@ -143,6 +161,8 @@ footer .footer-bottom {
   font-size: 0.8em;
 }
 
+=======
+>>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
 @keyframes slide {
   from {
     opacity: 0.4;
@@ -162,6 +182,7 @@ footer .footer-bottom {
   .m-cont .overlay-text p {
     font-size: small;
   }
+<<<<<<< HEAD
   footer .footer-content {
     flex-direction: column;
   }
@@ -171,6 +192,10 @@ footer .footer-bottom {
     -o-object-fit: fill;
        object-fit: fill;
   }
+=======
+}
+@media screen and (min-width: 740px) {
+>>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
   .m-cont .overlay-text {
     max-width: 90%;
     height: 200px;
