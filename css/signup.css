@@ -5,7 +5,7 @@
 }
 
 body {
-  background: url("images/background4.jpg") no-repeat center center;
+  background: url("/book-haven/images/background4.jpg") no-repeat center center;
   background-size: cover;
   height: 90vh;
   font-family: "Poppins", sans-serif;
