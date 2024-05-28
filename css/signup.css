@@ -5,7 +5,6 @@
 }
 
 body {
-<<<<<<< HEAD
   background: url("/book-haven/images/background4.jpg") no-repeat center center;
   background-size: cover;
   height: 90vh;
@@ -18,7 +17,6 @@ video {
   height: auto;
   width: 300px;
   margin: 80px auto;
-=======
   background-color: rgb(255, 255, 255);
 }
 
@@ -26,26 +24,19 @@ video {
   max-height: 400px;
   width: 500px;
   margin: 100px auto;
->>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
 }
 
 .container {
   position: relative;
-<<<<<<< HEAD
   height: 500px;
-=======
-  height: 400px;
->>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
+  /*height: 400px;*/
   width: 300px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-<<<<<<< HEAD
   background-color: rgba(78, 46, 27, 0.555);
-=======
   background-color: rgb(11, 90, 164);
->>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
   margin: 0px auto;
   border-radius: 5px;
   transition: transform 1000ms ease-in;
@@ -54,7 +45,6 @@ video {
 .f_container {
   padding: 10px;
   width: inherit;
-<<<<<<< HEAD
   color: #fffefe;
 }
 .f_container img {
@@ -67,13 +57,10 @@ video {
   font-weight: 600;
   text-align: center;
   margin-bottom: 30px;
-=======
->>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
 }
 
 input {
   margin: 10px 0px;
-<<<<<<< HEAD
   border-radius: 3px;
   background-color: rgba(255, 255, 255, 0.74);
   width: 100%;
@@ -134,7 +121,6 @@ a {
   font-weight: 300;
   font-size: 1em;
   text-decoration: none;
-=======
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.892);
   width: 100%;
@@ -153,7 +139,6 @@ a {
   float: right;
   color: black;
   font-size: 2em;
->>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
 }
 
 .sign-up {
@@ -172,17 +157,13 @@ a {
 
 .rotate-sign {
   transform: rotateY(180deg);
-<<<<<<< HEAD
   background-color: rgb(78, 46, 27);
-=======
->>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
   backface-visibility: hidden;
 }
 
 .rotate-log {
   transform: rotateY(0deg);
   backface-visibility: visible;
-<<<<<<< HEAD
 } /*# sourceMappingURL=styles.css.map */
 
 @media screen and (min-width: 425px) {
@@ -230,6 +211,3 @@ a {
   }
 }
 /*# sourceMappingURL=signup.css.map */
-=======
-}/*# sourceMappingURL=signup.css.map */
->>>>>>> fb8fbef0e32ff028e2d4bf8a6086ddab7e9d5f42
