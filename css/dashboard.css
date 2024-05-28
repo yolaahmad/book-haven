@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+:root {
+  --fs-1: 16px;
+}
+
+.grid-container {
+  grid-template-columns: minmax(200px, 400px) 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+.grid-container .sidebar {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+.grid-container .sidebar img {
+  display: block;
+  height: 40px;
+  width: 40px;
+}
+.grid-container .sidebar .top {
+  height: 40%;
+}
+.grid-container .sidebar .bottom {
+  height: 60%;
+}/*# sourceMappingURL=dashboard.css.map */
