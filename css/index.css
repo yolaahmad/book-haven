@@ -20,15 +20,12 @@ body {
 .m-cont {
   width: 90%;
   margin: 30px auto;
-  /* margin: 0 auto; */
   position: relative;
   box-shadow: 0px 0px 10px black;
 }
 .m-cont .carousel {
   width: 100%;
   height: 500px;
-  height: 600px;
-  padding: 10px;
   position: relative;
 }
 .m-cont .carousel img {
@@ -83,8 +80,7 @@ body {
 }
 
 .button {
-  /*margin: 20px;*/
-  margin-top: 25px;
+  margin: 20px;
 }
 .button button {
   font-size: 1.2em;
@@ -175,8 +171,6 @@ footer .footer-bottom {
     -o-object-fit: fill;
        object-fit: fill;
   }
-}
-@media screen and (min-width: 740px) {
   .m-cont .overlay-text {
     max-width: 90%;
     height: 200px;
