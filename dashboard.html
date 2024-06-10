@@ -4,46 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/dashboard.css">
-    <title>Document</title>
+    <title>Book-Haven</title>
 </head>
 <body>
-    <div class="grid-contianer">
+    <div class="grid-container">
         <aside class="sidebar">
             <div class="top">
-                <img src="./images/home_8370943.png" alt="Home button">
-                <img src="./images/search_8371315.png" alt="Search button">
+                <img src="./images/home_8370943.png" class="home-btn info-container" alt="Home button" data-info="Home">
+                <img src="./images/search_8371315.png" class="search-btn info-container" alt="Search button" data-info="Search">
             </div>
     
             <div class="bottom">
-                <img src="./images/open-book_10143400.png" alt="Your bookShelf">
-                <img src="./images/heart_9045145.png" alt="Favorites">
+                <img src="./images/open-book_10143400.png" alt="Your bookShelf" class="info-container" data-info="Your books">
+                <img src="./images/heart_9045145.png" alt="Favorites" class="info-container" data-info="Favorites">
             </div>
         </aside>
     
         <nav class="navbar">
-            <div>
-                <h2>BOOK HAVEN</h2>
-                <img src="./images/user.svg" alt="user icon">
-                <img src="" alt="dark mode btn">
+            <div class="inner-cont">
+                <a href="#"> <h2>BOOK <span>HAVEN</span></h2></a>
+                <div class="search-nav">
+                    <input type="text" class="input-el">
+                    <button id="search"><img src="./images/search_8371315.png" alt="search button"></button>
+                </div>
+                <div class="user-icon">
+                    <img src="./images/user.svg" id="user-icon" class="info-container" alt="user icon" data-info="User">
+                </div>
             </div>
         </nav>
     
         <main class="main-content">
-            <div class="recommended">
-    
-            </div>
-    
-            <div class="action">
-    
-            </div>
-    
-            <div class="comedy">
-    
-            </div>
-    
-            <div class="romance">
-    
-            </div>
+                <div class="trends category">
+                    <h2>RECOMMENDED</h2>
+                    <button class="prev-btn" data-category="trends">&lt;</button>
+                    <img src="./images/book_haven.gif" class="giphy-embed" alt="preloader">
+                    <div class="content">
+                        <!-- Recommended books content -->
+                    </div>
+                    <button class="next-btn" data-category="trends">&gt;</button>
+                </div>
+        
+                <div class="action category">
+                    <h2>ACTION</h2>
+                    <button class="prev-btn"  data-category="action">&lt;</button>
+                    <img src="./images/book_haven.gif" class="giphy-embed" alt="preloader">
+                    <div class="content">
+                        <!-- Recommended books content -->
+                    </div>
+                    <button class="next-btn"  data-category="action">&gt;</button>
+                </div>
+        
+                <div class="comedy category">
+                    <h2>COMEDY</h2>
+                    <button class="prev-btn" data-category="comedy">&lt;</button>
+                    <img src="./images/book_haven.gif" class="giphy-embed" alt="preloader">
+                    <div class="content">
+                        <!-- Recommended books content -->
+                    </div>
+                    <button class="next-btn" data-category="comedy">&gt;</button>
+                </div>
+        
+                <div class="romance category">
+                    <h2>ROMANCE</h2>
+                    <button class="prev-btn" data-category="romance">&lt;</button>
+                    <img src="./images/book_haven.gif" class="giphy-embed" alt="preloader">
+                    <div class="content">
+                        <!-- Recommended books content -->
+                    </div>
+                    <button class="next-btn" data-category="romance">&gt;</button>
+                </div>
+                <div class="search-div category">
+                    <div class="content">
+                        
+                    </div>
+                </div>
+                <div id="bookModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2 id="modalTitle"></h2>
+                        <p id="modalAuthor"></p>
+                        <img id="modalCover" src="" alt="Book Cover">
+                        <p id="modalDescription"></p>
+                        <div id="modal-book-review"></div>
+                        <button id="readButton">Read</button>
+                        <button id="addToLibrary">Add</button>
+                    </div>
+                </div>
         </main>
         <footer class="footer">
             <div class="footer-content">
@@ -68,6 +114,6 @@
             </div>
         </footer>
     </div>
-    
+    <script src="dashboard.js"></script>
 </body>
 </html>
