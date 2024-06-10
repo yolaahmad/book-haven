@@ -35,7 +35,7 @@
     
         <main class="main-content">
                 <div class="trends category">
-                    <h2>RECOMMENDED</h2>
+                    <h2 class="catalogue" data-category="trends">RECOMMENDED</h2>
                     <button class="prev-btn" data-category="trends">&lt;</button>
                     <img src="./images/book_haven.gif" class="giphy-embed" alt="preloader">
                     <div class="content">
@@ -45,7 +45,7 @@
                 </div>
         
                 <div class="action category">
-                    <h2>ACTION</h2>
+                    <h2 class="catalogue" data-category="action">ACTION</h2>
                     <button class="prev-btn"  data-category="action">&lt;</button>
                     <img src="./images/book_haven.gif" class="giphy-embed" alt="preloader">
                     <div class="content">
@@ -55,7 +55,7 @@
                 </div>
         
                 <div class="comedy category">
-                    <h2>COMEDY</h2>
+                    <h2 class="catalogue" data-category="comedy">COMEDY</h2>
                     <button class="prev-btn" data-category="comedy">&lt;</button>
                     <img src="./images/book_haven.gif" class="giphy-embed" alt="preloader">
                     <div class="content">
@@ -65,7 +65,7 @@
                 </div>
         
                 <div class="romance category">
-                    <h2>ROMANCE</h2>
+                    <h2 class="catalogue" data-category="romance">ROMANCE</h2>
                     <button class="prev-btn" data-category="romance">&lt;</button>
                     <img src="./images/book_haven.gif" class="giphy-embed" alt="preloader">
                     <div class="content">
@@ -74,6 +74,7 @@
                     <button class="next-btn" data-category="romance">&gt;</button>
                 </div>
                 <div class="search-div category">
+                    <span class="close-button">&times;</span>
                     <div class="content">
                         
                     </div>
@@ -114,6 +115,7 @@
             </div>
         </footer>
     </div>
-    <script src="dashboard.js"></script>
+    <script src="dashboard.js" type="module"></script>
+    <script src="transitions.js" type="module"></script>
 </body>
 </html>

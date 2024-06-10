@@ -1,10 +1,9 @@
+import {toggleSlideIn} from './transitions.js'
+
 const gif = document.querySelectorAll('.giphy-embed');
 const footerEL = document.querySelectorAll('.footer-el');
-const mainDiv = document.querySelector('.main-content');
 const inputEl = document.querySelector('.input-el');
 const searchBtn = document.getElementById('search');
-const searchSection = document.querySelector('.search-div');
-const myBooksBtn = document.querySelectorAll('.info-container');
 const bookDiv = document.querySelectorAll('.bookDiv');
 const prevBtns = document.querySelectorAll('.prev-btn');
 const nextBtns = document.querySelectorAll('.next-btn');
@@ -56,6 +55,9 @@ nextBtns.forEach(btn => {
 
 // Function to initialize the books and display the first page
 function initializeBooks(bookList, category) {
+    if(!books[category]){
+        books[category] = []
+    }
     books[category] = bookList;
     currentBookIndices[category] = 0;
     displayCurrentBooks(category);
@@ -64,77 +66,13 @@ function initializeBooks(bookList, category) {
 // Event to preload books
 document.addEventListener("DOMContentLoaded", () => searchForBooksByAnySubject(queries));
 
-// Array to store buttons search, home.......
-const btnArray = [];
-myBooksBtn.forEach(btn => {
-    btnArray.push(btn);
-});
-
-// Function to handle the common toggle logic
-function toggleSlideIn(additionalClass) {
-    searchSection.classList.toggle('slide-in');
-    if (mainDiv.style.overflowY === 'hidden') {
-        mainDiv.style.overflowY = 'auto';
-    } else {
-        mainDiv.style.overflowY = 'hidden';
-        console.log('clicked');
-    }
-    if (additionalClass) {
-        searchSection.classList.add(additionalClass);
-    }
-    console.log('hurray');
-}
-
 inputEl.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         queries.searchPrompts = inputEl.value.trim(); // Update and trim the search prompt value
         console.log('Search Prompt:', queries.searchPrompts); // Debugging line
         searchByPrompt(queries.searchPrompts);
+        inputEl.blur();
     }
-});
-
-// Home Button
-btnArray[0].addEventListener('click', () => {
-    btnArray[0].style.opacity = 1;
-    if (searchSection.classList.contains('slider')) {
-        searchSection.classList.remove('slide-in');
-        btnArray[1].style.opacity = 0.6;
-    }
-
-    if (searchSection.classList.contains('slide-in')) {
-        document.querySelector('.search-nav').classList.toggle('display-el');
-        document.querySelector('.inner-cont').children.item(0).classList.toggle('hide');
-        searchSection.classList.remove('slide-in');
-        mainDiv.style.overflowY = 'auto';
-        btnArray[1].style.opacity = 0.6;
-    }
-});
-
-// Search Button of aside element
-btnArray[1].addEventListener('click', () => {
-    document.querySelector('.search-nav').classList.toggle('display-el');
-    document.querySelector('.inner-cont').children.item(0).classList.toggle('hide');
-    searchSection.classList.toggle('slide-in');
-    if (mainDiv.style.overflowY === 'hidden') {
-        mainDiv.style.overflowY = 'auto';
-        document.querySelector('.home-btn').style.opacity = 1;
-        btnArray[1].style.opacity = 0.6;
-    } else {
-        mainDiv.style.overflowY = 'hidden';
-        document.querySelector('.home-btn').style.opacity = 0.5;
-        btnArray[1].style.opacity = 1;
-        console.log('clicked');
-    }
-});
-
-btnArray[2].addEventListener('click', () => {
-    bookContainers.forEach(container => container.innerHTML = '');
-    toggleSlideIn('slider');
-});
-
-btnArray[3].addEventListener('click', () => {
-    bookContainers.forEach(container => container.innerHTML = '');
-    toggleSlideIn('slider');
 });
 
 // Search button of nav element
@@ -144,6 +82,7 @@ searchBtn.addEventListener('click', () => {
     searchByPrompt(queries.searchPrompts);
 });
 
+//Searching by prompts
 async function searchByPrompt(searchPrompt) {
     const searchUrl = 'https://openlibrary.org/search.json';
     const limit = 15;
@@ -162,6 +101,7 @@ async function searchByPrompt(searchPrompt) {
     }
 }
 
+// Searching by subjects
 async function searchForBooksByAnySubject({ searchPrompts, subjects }) {
     const searchUrl = 'https://openlibrary.org/search.json';
     const limit = 15;
@@ -173,8 +113,8 @@ async function searchForBooksByAnySubject({ searchPrompts, subjects }) {
             
             const results = await Promise.all(subjectPromises);
 
-            results.forEach((res, ind) => {
-                const category = subjects[ind];
+            results.forEach((res, index) => {
+                const category = subjects[index];
                 initializeBooks(res.docs, category);
             });
         }
@@ -184,6 +124,7 @@ async function searchForBooksByAnySubject({ searchPrompts, subjects }) {
     }
 }
 
+//Displaying the books
 function displayBooks(books, category) {
     const categoryDiv = document.querySelector(`.${category}.category`);
 
@@ -229,9 +170,9 @@ function displayBooks(books, category) {
         fragment.appendChild(bookDiv);
 
         bookDiv.addEventListener('click', () => showBookDetails(book));
-    });
-
-    contentDiv.appendChild(fragment);
+        });
+        
+        contentDiv.appendChild(fragment);
 
     const gifs = document.querySelectorAll('.giphy-embed'); 
     gifs.forEach(img => {
@@ -239,7 +180,7 @@ function displayBooks(books, category) {
     });
 }
 
-
+// Modal to display book details
 async function showBookDetails(book) {
     const modal = document.getElementById('bookModal');
     const modalTitle = document.getElementById('modalTitle');
@@ -286,4 +227,53 @@ window.onclick = function(event) {
     if (event.target === modal) {
         modal.style.display = 'none';
     }
+}
+
+document.querySelectorAll('.catalogue').forEach(header => {
+    header.addEventListener('click', () => {
+        const category = header.dataset.category;
+        displayCategory(category);
+        toggleSlideIn()
+        console.log('saerching.....');
+    });
+});
+
+
+function displayCategory(category) {
+    const searchDiv = document.querySelector('.search-div .content');
+    searchDiv.innerHTML = ''; // Clear existing content
+
+    const booksToDisplay = books[category]; // Get the books for the selected category
+
+    if (!booksToDisplay) {
+        console.error(`No books found for category: ${category}`);
+        return;
+    }
+
+    booksToDisplay.forEach((book) => {
+        const bookDiv = document.createElement('div');
+        bookDiv.classList.add('content-div');
+
+        const coverImage = document.createElement('img');
+        coverImage.classList.add('cover-Image');
+        coverImage.src = book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : './images/book_haven.gif';
+        coverImage.alt = book.title;
+        bookDiv.appendChild(coverImage);
+
+        const footerDiv = document.createElement('div');
+        footerDiv.classList.add('footer-div');
+
+        const title = document.createElement('h2');
+        title.textContent = book.title;
+        footerDiv.appendChild(title);
+
+        const author = document.createElement('p');
+        author.textContent = `Author: ${book.author_name ? book.author_name[0] : 'Unknown'}`;
+        footerDiv.appendChild(author);
+
+        bookDiv.appendChild(footerDiv);
+        searchDiv.appendChild(bookDiv);
+
+        bookDiv.addEventListener('click', () => showBookDetails(book));
+    });
 }
