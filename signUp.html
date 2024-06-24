@@ -18,7 +18,7 @@
     </video>
     <main class="m-cont">
       <!-- Sign Up Form -->
-      <div class="container sign-up">
+      <div class="container sign-up" id="sign-up">
         <form action="insert.php" method="POST" class="f_container">
           <img src="images/book.png" />
           <h2>Sign Up</h2>
@@ -62,6 +62,52 @@
           <input type="submit" id="sub-btn" value="Submit" />
           <p>Already a member? <a href="#" id="login-link">Login</a></p>
         </form>
+
+        <!-- Username Format Modal -->
+        <div id="usernameFormatModal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="closeUsernameFormatModal">&times;</span>
+            <div class="image-circle">
+              <img src="images/exclamation-triangle-fill.svg" />
+            </div>
+            <p>
+              Invalid username format. Please use only letters and numbers, 3-20
+              characters long.
+            </p>
+          </div>
+        </div>
+
+        <!-- Email Format Modal -->
+        <div id="emailFormatModal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="closeEmailFormatModal">&times;</span>
+            <div class="image-circle">
+              <img src="images/exclamation-triangle-fill.svg" />
+            </div>
+            <p>Invalid email format. Please enter a valid email address.</p>
+          </div>
+        </div>
+
+        <!-- Password Length Modal -->
+        <div id="passwordLengthModal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="closePasswordLengthModal">&times;</span>
+            <div class="image-circle">
+              <img src="images/exclamation-triangle-fill.svg" />
+            </div>
+            <p>Password should be at least 8 characters long.</p>
+          </div>
+        </div>
+
+        <div id="usernameExistsModal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="closeUsernameExistsModal">&times;</span>
+            <div class="image-circle">
+              <img src="images/exclamation-triangle-fill.svg" />
+            </div>
+            <p>Username already exists. Please choose another one.</p>
+          </div>
+        </div>
       </div>
 
       <!-- Login Form -->
@@ -98,12 +144,119 @@
               style="display: none"
             />
           </div>
-          <div class="reset"><a href="#">Forgot Password?</a></div>
+          <div class="reset">
+            <span id="forgotPass" onclick="displayReset()"
+              ><a href="#">Forgot Password?</a></span
+            >
+          </div>
           <input type="submit" id="login-btn" value="Login" />
           <p>Are you a new user? <a href="#" id="sign-link">Sign Up</a></p>
         </form>
       </div>
+
+      <!--Password Reset container-->
+      <div class="reset-pass" id="resetPass">
+        <form action="recover_password.php" method="POST" class="r_container">
+          <span
+            class="closePass"
+            id="closeResetPassModal"
+            onclick="closeResetPass()"
+            >&times;</span
+          >
+          <img src="images/book.png" />
+          <h2>Reset Password</h2>
+          <input
+            type="text"
+            name="recovery_key"
+            id="recovery_key"
+            placeholder="Enter recovery key"
+            required
+          />
+          <div class="icon">
+            <input
+              type="password"
+              name="new_password"
+              id="new_password"
+              placeholder="Enter new password"
+              required
+              minlength="8"
+            />
+            <img
+              src="images/eye-fill.svg"
+              onclick="togglePass3()"
+              id="eyeIcon3"
+            />
+            <img
+              src="images/eye-slash-fill.svg"
+              onclick="togglePass3()"
+              id="hidePass3"
+              style="display: none"
+            />
+          </div>
+
+          <button type="submit" id="reset-btn">Submit</button>
+        </form>
+
+        <!-- Invalid Recovery Key Modal -->
+        <div id="invalidRecoveryKeyModal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="closeInvalidRecoveryKeyModal">&times;</span>
+            <div class="image-circle">
+              <img src="images/exclamation-triangle-fill.svg" />
+            </div>
+            <p>Invalid recovery key. Please try again.</p>
+          </div>
+        </div>
+
+        <!-- Password Updated Successfully Modal -->
+        <div id="passwordUpdatedModal" class="modal2 modal">
+          <div class="modal-content2">
+            <span class="close" id="closePasswordUpdatedModal">&times;</span>
+            <div class="image-circle2">
+              <img src="images/check-circle-fill.svg" />
+            </div>
+            <p>
+              Password updated successfully.
+              <a href="signUp.html" style="color: blue; font-weight: 600"
+                >Login</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
     </main>
+
+    <div id="emptyFieldsModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeEmptyFieldsModal">&times;</span>
+        <div class="image-circle">
+          <img src="images/exclamation-triangle-fill.svg" />
+        </div>
+        <p>Please fill in all fields.</p>
+      </div>
+    </div>
+
+    <!-- Username Not Found Modal -->
+    <div id="usernameNotFoundModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeUsernameNotFoundModal">&times;</span>
+        <div class="image-circle">
+          <img src="images/exclamation-triangle-fill.svg" />
+        </div>
+        <p>Username not found. Please check your username and try again.</p>
+      </div>
+    </div>
+
+    <!-- Invalid Password Modal -->
+    <div id="invalidPasswordModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeInvalidPasswordModal">&times;</span>
+        <div class="image-circle">
+          <img src="images/exclamation-triangle-fill.svg" />
+        </div>
+        <p>Invalid password. Please try again.</p>
+      </div>
+    </div>
     <script src="login.js"></script>
   </body>
 </html>
