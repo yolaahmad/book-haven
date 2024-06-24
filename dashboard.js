@@ -1,4 +1,4 @@
-import {toggleSlideIn} from './transitions.js'
+import {toggleSlideIn} from './transitions.js '
 
 const gif = document.querySelectorAll('.giphy-embed');
 const footerEL = document.querySelectorAll('.footer-el');
