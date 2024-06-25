@@ -1,73 +1,92 @@
-export {toggleSlideIn}
+export { toggleSlideIn };
 
-const myBooksBtn = document.querySelectorAll('.info-container');
-const mainDiv = document.querySelector('.main-content');
-const searchSection = document.querySelector('.search-div');
+const myBooksBtn = document.querySelectorAll(".info-container");
+const mainDiv = document.querySelector(".main-content");
+const searchSection = document.querySelector(".search-div");
 
 // Array to store buttons search, home.......
 const btnArray = [];
-myBooksBtn.forEach(btn => {
-    btnArray.push(btn);
+myBooksBtn.forEach((btn) => {
+  btnArray.push(btn);
 });
 
 // Function to handle the common toggle logic
 function toggleSlideIn(additionalClass) {
-    searchSection.classList.toggle('slide-in');
-    if (mainDiv.style.overflowY === 'hidden') {
-        mainDiv.style.overflowY = 'auto';
-    } else {
-        mainDiv.style.overflowY = 'hidden';
-        console.log('clicked');
-    }
-    if (additionalClass) {
-        searchSection.classList.add(additionalClass);
-    }
-    console.log('hurray');
+  searchSection.classList.toggle("slide-in");
+  if (mainDiv.style.overflowY === "hidden") {
+    mainDiv.style.overflowY = "auto";
+  } else {
+    mainDiv.style.overflowY = "hidden";
+    console.log("clicked");
+  }
+  if (additionalClass) {
+    searchSection.classList.add(additionalClass);
+  }
+  console.log("hurray");
 }
 
 // Home Button
-btnArray[0].addEventListener('click', () => {
-    btnArray[0].style.opacity = 1;
-    if (searchSection.classList.contains('slider')) {
-        searchSection.classList.remove('slide-in');
-        btnArray[1].style.opacity = 0.6;
-    }
+btnArray[0].addEventListener("click", () => {
+  btnArray[0].style.opacity = 1;
+  if (searchSection.classList.contains("slider")) {
+    searchSection.classList.remove("slide-in");
+    btnArray[1].style.opacity = 0.6;
+  }
 
-    if (searchSection.classList.contains('slide-in')) {
-        document.querySelector('.search-nav').classList.toggle('display-el');
-        document.querySelector('.inner-cont').children.item(0).classList.toggle('hide');
-        searchSection.classList.remove('slide-in');
-        mainDiv.style.overflowY = 'auto';
-        btnArray[1].style.opacity = 0.6;
-    }
+  if (searchSection.classList.contains("slide-in")) {
+    document.querySelector(".search-nav").classList.toggle("display-el");
+    document
+      .querySelector(".inner-cont")
+      .children.item(0)
+      .classList.toggle("hide");
+    searchSection.classList.remove("slide-in");
+    mainDiv.style.overflowY = "auto";
+    btnArray[1].style.opacity = 0.6;
+  }
 });
 
 // Search Button of aside element
-btnArray[1].addEventListener('click', () => {
-    document.querySelector('.search-nav').classList.toggle('display-el');
-    document.querySelector('.inner-cont').children.item(0).classList.toggle('hide');
-    searchSection.classList.toggle('slide-in');
-    if (mainDiv.style.overflowY === 'hidden') {
-        mainDiv.style.overflowY = 'auto';
-        document.querySelector('.home-btn').style.opacity = 1;
-        btnArray[1].style.opacity = 0.6;
-    } else {
-        mainDiv.style.overflowY = 'hidden';
-        document.querySelector('.home-btn').style.opacity = 0.5;
-        btnArray[1].style.opacity = 1;
-        console.log('clicked');
-    }
+btnArray[1].addEventListener("click", () => {
+  document.querySelector(".search-nav").classList.toggle("display-el");
+  document
+    .querySelector(".inner-cont")
+    .children.item(0)
+    .classList.toggle("hide");
+  searchSection.classList.toggle("slide-in");
+  if (mainDiv.style.overflowY === "hidden") {
+    mainDiv.style.overflowY = "auto";
+    document.querySelector(".home-btn").style.opacity = 1;
+    btnArray[1].style.opacity = 0.6;
+  } else {
+    mainDiv.style.overflowY = "hidden";
+    document.querySelector(".home-btn").style.opacity = 0.5;
+    btnArray[1].style.opacity = 1;
+    console.log("clicked");
+  }
 });
 
-btnArray[2].addEventListener('click', () => {
-    toggleSlideIn('slider');
+let isAtZeroPercent = false;
+
+const libraryElement = document.querySelector(".library");
+const favouritesElement = document.querySelector(".favourites");
+
+btnArray[2].addEventListener("click", () => {
+  if (isAtZeroPercent) {
+    libraryElement.style.transform = "translateX(-100%)";
+  } else {
+    libraryElement.style.transform = "translateX(0%)";
+  }
+  isAtZeroPercent = !isAtZeroPercent;
 });
 
-btnArray[3].addEventListener('click', () => {
-    toggleSlideIn('slider');
+btnArray[3].addEventListener("click", () => {
+  if (isAtZeroPercent) {
+    favouritesElement.style.transform = "translateX(-100%)";
+  } else {
+    libraryElement.style.transform = "translateX(0%)";
+  }
+  isAtZeroPercent = !isAtZeroPercent;
 });
-
-
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     const infoContainers = document.querySelectorAll('.info-container');
