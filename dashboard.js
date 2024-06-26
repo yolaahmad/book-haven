@@ -177,7 +177,6 @@ function displayBooks(books, category) {
     }`;
     footerDiv.appendChild(author);
 
-    bookDiv.style.height = "auto";
     bookDiv.appendChild(footerDiv);
     fragment.appendChild(bookDiv);
 
@@ -321,7 +320,7 @@ function showNotification(message) {
 
 // Function to add book to the library section
 function addToLibrary(book) {
-  const libraryContent = document.querySelector(".library .library-content");
+  const libraryContent = document.querySelector(".library .content");
 
   // Check if the book is already in the library
   const existingBook = libraryContent.querySelector(
@@ -413,7 +412,7 @@ window.onclick = function (event) {
 // Function to add book to the favourite section
 function addToFavourites(book) {
   const favouritesContent = document.querySelector(
-    ".favourites .favourites-content"
+    ".favourites .content"
   );
 
   // Check if the book is already in the favourites
