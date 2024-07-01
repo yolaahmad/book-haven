@@ -1,4 +1,4 @@
-import { toggleSlideIn } from "./transitions.js ";
+//import { toggleSlideIn } from "./transitions.js ";
 
 const gif = document.querySelectorAll(".giphy-embed");
 const footerEL = document.querySelectorAll(".footer-el");
@@ -256,7 +256,7 @@ document.querySelectorAll(".catalogue").forEach((header) => {
   header.addEventListener("click", () => {
     const category = header.dataset.category;
     displayCategory(category);
-    toggleSlideIn();
+    // toggleSlideIn();
     console.log("searching.....");
   });
 });
@@ -315,6 +315,7 @@ function showNotification(message) {
 
   setTimeout(() => {
     notification.classList.remove("show");
+    console.log('removed notification');
   }, 1300); // Adjust the timeout as needed
 }
 

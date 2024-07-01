@@ -1,89 +1,114 @@
-export { toggleSlideIn };
+// export { toggleSlideIn };
 
 const myBooksBtn = document.querySelectorAll(".info-container");
+const divs = document.querySelectorAll('.close')
 const mainDiv = document.querySelector(".main-content");
-const searchSection = document.querySelector(".search-div");
 
+let isAtZeroPercent = false;
 // Array to store buttons search, home.......
 const btnArray = [];
+const divsArray = [];
+
 myBooksBtn.forEach((btn) => {
   btnArray.push(btn);
 });
+divs.forEach(div =>{
+  divsArray.push(div)
+})
+const [homeBtn, searchBtn, libraryBtn, favBtn] = btnArray
+const [searchDiv, libraryDiv, favDiv] = divsArray
 
-// Function to handle the common toggle logic
-function toggleSlideIn(additionalClass) {
-  searchSection.classList.toggle("slide-in");
-  if (mainDiv.style.overflowY === "hidden") {
-    mainDiv.style.overflowY = "auto";
-  } else {
-    mainDiv.style.overflowY = "hidden";
-    console.log("clicked");
-  }
-  if (additionalClass) {
-    searchSection.classList.add(additionalClass);
-  }
-  console.log("hurray");
-}
+homeBtn.addEventListener('click', closeAnyDiv)
 
-// Home Button
-btnArray[0].addEventListener("click", () => {
-  btnArray[0].style.opacity = 1;
-  if (searchSection.classList.contains("slider")) {
-    searchSection.classList.remove("slide-in");
-    btnArray[1].style.opacity = 0.6;
-  }
-
-  if (searchSection.classList.contains("slide-in")) {
-    document.querySelector(".search-nav").classList.toggle("display-el");
-    document
+function closeAnyDiv() {
+  divsArray.forEach(div => {
+      div.style.transform = 'translateX(-100%)';
+      div.classList.remove('slide-in'); // Ensure slide-in class is removed
+  });
+  document
       .querySelector(".inner-cont")
       .children.item(0)
-      .classList.toggle("hide");
-    searchSection.classList.remove("slide-in");
-    mainDiv.style.overflowY = "auto";
-    btnArray[1].style.opacity = 0.6;
-  }
-});
+      .classList.remove("hide");
+  mainDiv.style.overflowY = 'auto';
+  document.querySelector(".search-nav").classList.remove("display-el");
+
+  isAtZeroPercent = false;
+  homeBtn.style.opacity = 0.6;
+  searchBtn.style.opacity = 1
+  console.log('closing any open div');
+  return;
+}
+
 
 // Search Button of aside element
-btnArray[1].addEventListener("click", () => {
-  document.querySelector(".search-nav").classList.toggle("display-el");
-  document
-    .querySelector(".inner-cont")
-    .children.item(0)
-    .classList.toggle("hide");
-  searchSection.classList.toggle("slide-in");
-  if (mainDiv.style.overflowY === "hidden") {
-    mainDiv.style.overflowY = "auto";
-    document.querySelector(".home-btn").style.opacity = 1;
-    btnArray[1].style.opacity = 0.6;
+searchBtn.addEventListener("click", () => {
+  console.log('Search button clicked');
+  
+  if (searchDiv.classList.contains('slide-in')) {
+      // Exiting search mode
+      console.log('Exiting search mode');
+      mainDiv.style.overflowY = 'auto';
+      searchDiv.style.transform = 'translateX(-100%)';
+      searchDiv.classList.remove('slide-in');
+      document.querySelector(".inner-cont").children.item(0).classList.remove("hide");
+      document.querySelector(".search-nav").classList.remove("display-el");
+      homeBtn.style.opacity = 0.6;
+      searchBtn.style.opacity = 1
   } else {
-    mainDiv.style.overflowY = "hidden";
-    document.querySelector(".home-btn").style.opacity = 0.5;
-    btnArray[1].style.opacity = 1;
-    console.log("clicked");
+      // Entering search mode
+      console.log('Entering search mode');
+      closeAnyDiv(); // Ensure other divs are closed
+      mainDiv.style.overflowY = 'hidden';
+      searchDiv.style.transform = 'translateX(0%)';
+      searchDiv.classList.add('slide-in');
+      document.querySelector(".inner-cont").children.item(0).classList.add("hide");
+      document.querySelector(".search-nav").classList.add("display-el");
+      homeBtn.style.opacity = 1;
+      searchBtn.style.opacity = 0.6
   }
 });
 
-let isAtZeroPercent = false;
 
-const libraryElement = document.querySelector(".library");
-const favouritesElement = document.querySelector(".favourites");
-
-btnArray[2].addEventListener("click", () => {
+libraryBtn.addEventListener("click", () => {
   if (isAtZeroPercent) {
-    libraryElement.style.transform = "translateX(-100%)";
+    libraryDiv.style.transform = "translateX(-100%)";
+    document
+    .querySelector(".inner-cont")
+    .children.item(0)
+    .classList.remove("hide");
+    homeBtn.style.opacity = 0.6
   } else {
-    libraryElement.style.transform = "translateX(0%)";
+    closeAnyDiv()
+    // remove search bar
+    document.querySelector(".search-nav").classList.remove("display-el");
+    libraryDiv.style.transform = "translateX(0%)";
+    btnArray.forEach(btn =>{
+      btn.style.opacity = 1
+    })
+    favBtn.style.opacity = 0.6
+    console.log('in lib');
   }
   isAtZeroPercent = !isAtZeroPercent;
 });
 
-btnArray[3].addEventListener("click", () => {
+favBtn.addEventListener("click", () => {
   if (isAtZeroPercent) {
-    favouritesElement.style.transform = "translateX(-100%)";
+    favDiv.style.transform = "translateX(-100%)";
+    document
+    .querySelector(".inner-cont")
+    .children.item(0)
+    .classList.remove("hide");
+    homeBtn.style.opacity = 0.6
   } else {
-    libraryElement.style.transform = "translateX(0%)";
+    closeAnyDiv()
+
+    document.querySelector(".search-nav").classList.remove("display-el");
+    favDiv.style.transform = "translateX(0%)";
+    btnArray.forEach(btn =>{
+      btn.style.opacity = 1
+    })
+    favBtn.style.opacity = 0.6
+    console.log('in fav');
   }
   isAtZeroPercent = !isAtZeroPercent;
 });
