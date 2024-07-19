@@ -39,7 +39,7 @@ $firstLetter = strtoupper(substr($username, 0, 1));
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/dashboardd.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
     <title>Book-Haven</title>
   </head>
   <body>
