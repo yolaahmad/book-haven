@@ -1,9 +1,45 @@
+<?php
+
+if (isset($_SESSION['email']) && isset($_SESSION['username'])){
+}
+?>
+
+<?php
+session_start();
+
+if (!isset($_SESSION['ID'])){
+    header("location: login.php");
+    exit();
+}
+
+include "connect.php";
+
+$userID = $_SESSION['ID'];
+$sql = "SELECT username, email, recovery_key FROM users WHERE ID = $userID";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $_SESSION['username'] = $row["username"];
+    $_SESSION['email'] = $row["email"];
+    $_SESSION['recovery_key'] = $row["recovery_key"];
+} else{
+  $_SESSION['username'] = "Unknown";
+  $_SESSION['email'] = "";
+  $_SESSION['recovery_key'] = "";
+}
+$conn->close();
+$firstLetter = strtoupper(substr($username, 0, 1));
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/dashboardd.css" />
     <title>Book-Haven</title>
   </head>
   <body>
@@ -37,6 +73,13 @@
             class="info-container"
             data-info="Favorites"
           />
+           <a href="logout.php">
+          <img
+            src="./images/box-arrow-in-left.svg"
+            alt="Log out"
+            class="info-container logout"
+          />
+          </a>
         </div>
       </aside>
 
@@ -51,7 +94,10 @@
               <img src="./images/search_8371315.png" alt="search button" />
             </button>
           </div>
-          <div class="user-icon">
+
+          <!-- Use any element to open/show the overlay navigation menu -->
+
+          <div class="user-icon" onclick="openNav()">
             <img
               src="./images/user.svg"
               id="user-icon"
@@ -60,7 +106,80 @@
               data-info="User"
             />
           </div>
-        </div>
+          <div id="myNav" class="overlay">
+                    <a href="javascript:void(0)" class="closeOverlay" onclick="closeNav()">&times;</a>
+                    <div class="overlay-content">
+                      <ul>
+                      <img src="./images/user.svg"> <li><span> Username: <?php echo $_SESSION['username'] ?></span></li>
+                      <img src="./images/envelope.svg">  <li> <span> Email Address:</h4> <?php echo $_SESSION['email']?></span> </li>
+                      <img src="./images/key.svg">   <li> <span> Recovery Key:</h4> <?php echo $_SESSION['recovery_key']?></span></li>
+                      </ul>
+                      <p>*Save your recovery key somewhere safe. (Incase of password reset may arise!)</p>
+                    </div>
+                </div>
+
+        <script>
+          let user = null;
+
+          function openNav() {
+            const overlay = document.getElementById("myNav");
+            if (overlay) {
+              displayUserInfoInOverlay();
+              overlay.classList.toggle("show");
+              overlay.style.height = "40%";
+            } else {
+              console.error("Overlay element not found");
+            }
+          }
+
+          function closeNav() {
+            const overlay = document.getElementById("myNav");
+            if (overlay) {
+              overlay.style.height = "0%";
+              overlay.classList.remove("show");
+            } else {
+              console.error("Overlay element not found");
+            }
+          }
+
+
+          function displayUserInfoInOverlay() {
+            if (user) {
+              const welcomeMessage = document.getElementById("welcome-message");
+              const userEmail = document.getElementById("user-email");
+              const userRecoveryKey =
+                document.getElementById("user-recovery-key");
+
+              if (welcomeMessage && userEmail && userRecoveryKey) {
+                welcomeMessage.textContent = `Welcome, ${user.username}`;
+                userEmail.textContent = user.email;
+                userRecoveryKey.textContent = user.recovery_key;
+              } else {
+                console.error("One or more user detail elements not found");
+              }
+            } 
+          }
+
+          document.addEventListener("DOMContentLoaded", () => {
+            fetchUserDetails();
+          });
+
+          document
+            .getElementById("logout-button")
+            .addEventListener("click", () => {
+              fetch("logout.php", { method: "POST" })
+                .then((response) => response.json())
+                .then((data) => {
+                  if (data.status === "success") {
+                    window.location.href = "login.html";
+                  } else {
+                    console.error("Logout failed");
+                  }
+                })
+                .catch((error) => console.error("Error:", error));
+            });
+        </script>
+     
       </nav>
 
       <main class="main-content">
@@ -182,3 +301,4 @@
     <script src="transitions.js" type="module"></script>
   </body>
 </html>
+

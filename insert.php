@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Execute and check if the insertion was successful
     if ($stmt->execute()) {
         // Redirect to the dashboard
-        header("Location: dashboard.html");
+        header("Location: dashboard.php");
         exit();
     } else {
         echo "Error: " . $stmt->error;

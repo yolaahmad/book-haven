@@ -315,7 +315,7 @@ function showNotification(message) {
 
   setTimeout(() => {
     notification.classList.remove("show");
-    console.log('removed notification');
+    console.log("removed notification");
   }, 1300); // Adjust the timeout as needed
 }
 
@@ -412,9 +412,7 @@ window.onclick = function (event) {
 
 // Function to add book to the favourite section
 function addToFavourites(book) {
-  const favouritesContent = document.querySelector(
-    ".favourites .content"
-  );
+  const favouritesContent = document.querySelector(".favourites .content");
 
   // Check if the book is already in the favourites
   const favExistingBook = favouritesContent.querySelector(

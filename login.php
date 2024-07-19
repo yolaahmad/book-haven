@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connect.php'; // Include the database connection script
 
 function validate_input($data) {
@@ -20,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check if username exists
-    $stmt = $conn->prepare("SELECT ID, Password FROM users WHERE Username = ?");
+    $stmt = $conn->prepare("SELECT ID, Password FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->store_result();
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $username;
 
             // Password is correct, redirect to dashboard
-            header("Location: dashboard.html");
+            header("Location: dashboard.php");
             exit();
         } else {
             // Invalid password

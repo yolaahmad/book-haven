@@ -19,6 +19,87 @@ body {
   --ff-pop: Poppins, sans-serif;
 }
 
+.overlay {
+  height: 0;
+  width: 100%;
+  position: fixed; 
+  z-index: 9999; 
+  left: 0;
+  margin-top: -30px;
+  top: 0;
+  background: #232020;
+  overflow-x: hidden; 
+  transition: 0.7s;
+  border-radius: 0px 0px 30px 30px;
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  margin: 20px;
+  margin-left: 0;
+  width: 100%; /* 100% width */
+  margin-top: 80px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+.overlay-content ul{
+  display: block;
+  padding: 13px;
+}
+.overlay-content ul img{
+  height: 28px;
+  width: 28px;
+  margin-left: -4px;
+  position: absolute;
+  background-color: var(--text-color-);
+  padding: 5px;
+  margin-top: 14;
+  border-radius: 50%;
+}
+.overlay-content span{
+font-size: 0.97em;
+padding-left: 26px;
+font-weight: 500;
+}
+.overlay-content p{
+  color: red;
+  font-size: 0.98em;
+}
+.overlay-content ul li{
+  list-style: none;
+margin-left: 70px;
+margin: 5px;
+
+}
+
+/* The navigation links inside the overlay */
+.overlay h1,
+p,
+button {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 1em;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover,
+.overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closeOverlay {
+  position: absolute;
+  top: 20px;
+  text-align: right;
+  float: right;
+  right: 21px;
+  font-size: 2.1em;
+}
+
 .show {
   top: 20px;
 }
@@ -66,6 +147,15 @@ body {
   background: #2a2929;
   border-radius: 5px;
   padding-top: 5px;
+}
+
+.grid-container .sidebar .bottom a .logout {
+background-color: var(--text-color-);
+opacity: 0.8;
+padding: 6px;
+border-radius: 50%;
+height: 46px;
+width: 46px;
 }
 .grid-container .navbar {
   grid-column: span 1;
@@ -202,7 +292,7 @@ body {
   /* Placeholder for actual content */
   display: flex;
   -moz-column-gap: 10px;
-       column-gap: 10px;
+  column-gap: 10px;
   align-items: center;
   width: 100%;
   height: auto;
@@ -230,7 +320,7 @@ body {
   width: inherit;
   border-radius: 5px;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 .grid-container .main-content .content .content-div .footer-div {
   padding: 10px;
@@ -461,7 +551,13 @@ body {
 .grid-container .main-content .favourites .content .content-div .footer-div h2 {
   height: 50%;
 }
-.grid-container .main-content .favourites .content .content-div .footer-div .remove-btn {
+.grid-container
+  .main-content
+  .favourites
+  .content
+  .content-div
+  .footer-div
+  .remove-btn {
   padding: 10px;
   margin: 5px auto;
   background-color: rgb(6, 165, 218);
@@ -507,7 +603,7 @@ body {
   height: 200px;
   margin: 10px 0px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 4px;
 }
 .grid-container .main-content .modal .modal-content button {
@@ -593,4 +689,4 @@ body {
   100% {
     transform: translateX(0%);
   }
-}/*# sourceMappingURL=dashboard.css.map */
+} /*# sourceMappingURL=dashboard.css.map */
