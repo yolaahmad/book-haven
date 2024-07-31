@@ -4,6 +4,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+header{
+  height: 75px;
+}
+header img {
+  height: 35px;
+  width: 35px;
+  margin: 10px auto;
+  display: block;
+}
+header h2 {
+  font-weight: 900;
+  text-align: center;
+  color: #fff;
+  
+}
+header span {
+ 
+  color: rgb(255, 234, 117);
+  
+}
 
 body {
   background-color: rgba(255, 140, 0, 0.94);
