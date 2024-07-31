@@ -378,9 +378,7 @@ a {
 }
 
 @media screen and (min-width: 1024px) {
-  body{
-    background: green;
-  }
+
   body video {
     position: fixed;
     right: 0;
