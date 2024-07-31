@@ -1,4 +1,3 @@
-<!---
 <?php
 
 if (isset($_SESSION['email']) && isset($_SESSION['username'])){
@@ -34,7 +33,6 @@ $conn->close();
 $firstLetter = strtoupper(substr($username, 0, 1));
 
 ?>
--->
 <!DOCTYPE html>
 <html lang="en">
   <head>
